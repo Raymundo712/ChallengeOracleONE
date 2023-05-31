@@ -1,7 +1,7 @@
 const textArea = document.querySelector(".text-area");
 const mensaje = document.querySelector(".mensaje");
 const copia = document.querySelector(".copiar");
-copia.style.display = "none"
+copia.style.display = "none";
 
 
 function validarTexto(){
@@ -9,7 +9,7 @@ function validarTexto(){
     let validador = textoEscrito.match(/^[a-z .,\s]*$/);
 
     if(!validador || validador === 0) {
-        alert("Solo son permitidas letras minúsculas y sin acentos")
+        alert("Solo son permitidas letras minúsculas y sin acentos");
         location.reload();
         return true;
     }
@@ -18,11 +18,11 @@ function validarTexto(){
 
 function btnEncriptar(){
     if(!validarTexto()) {
-        const textoEncriptado = encriptar(textArea.value)
-        mensaje.value = textoEncriptado
-        mensaje.style.backgroundImage = "none"
+        const textoEncriptado = encriptar(textArea.value);
+        mensaje.value = textoEncriptado;
+        mensaje.style.backgroundImage = "none";
         textArea.value = "";
-        copia.style.display = "block"
+        copia.style.display = "block";
     
     }
 }
@@ -37,23 +37,23 @@ function btnEncriptar(){
 
 function encriptar(stringEncriptada){
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringEncriptada = stringEncriptada.toLowerCase()
+    stringEncriptada = stringEncriptada.toLowerCase();
 
     for(let i = 0; i < matrizCodigo.length; i++){
         if(stringEncriptada.includes(matrizCodigo[i][0])){
-            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1])
+            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
 
         }
 
     }
-    return stringEncriptada
+    return stringEncriptada;
 }
 
 
 
 function btnDesencriptar(){
-    const textoEncriptado = desencriptar(textArea.value)
-    mensaje.value = textoEncriptado
+    const textoEncriptado = desencriptar(textArea.value);
+    mensaje.value = textoEncriptado;
     textArea.value = "";
     
 }
@@ -61,22 +61,21 @@ function btnDesencriptar(){
 
 function desencriptar(stringDesencriptada){
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringDesencriptada = stringDesencriptada.toLowerCase()
+    stringDesencriptada = stringDesencriptada.toLowerCase();
 
     for(let i = 0; i < matrizCodigo.length; i++){
         if(stringDesencriptada.includes(matrizCodigo[i][1])){
-            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1] , matrizCodigo[i][0])
-
+            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1] , matrizCodigo[i][0]);
         }
 
     }
-    return stringDesencriptada
+    return stringDesencriptada;
 }
 
 
 function copiar(){
     mensaje.select();
-    navigator.clipboard.writeText(mensaje.value)
+    navigator.clipboard.writeText(mensaje.value);
     mensaje.value = "";
-    alert("Texto Copiado")
+    alert("Texto Copiado");
 }
